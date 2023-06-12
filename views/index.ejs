@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jury Oral DNB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Liste des jurys</h1>
+    <ul>
+        <% for(let i = 1; i < 21; i++) { %>
+            <div><li>Jury <%= i %></li><li>
+                <% if(jurys[i]) { %>
+                    <%= jurys[i] %>
+                <% } else { %>
+                    jsp
+                <% } %>
+            <button onclick="modifier(<%= i %>)">Modifier</button></li></div>
+        <% } %>
+    </ul>
+    <div id="conteneur_position_absolute">
+        <div id="modifier">
+            <input type="text" placeholder="Le nom des jurys" id="noms_jurys">
+            <button onclick="envoyerModif(document.getElementById('noms_jurys').value)">Envoyer</button>
+            <img src="img/croix.svg" onclick="conteneur_position_absolute.style.display = 'none'; juryModif = null">
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
